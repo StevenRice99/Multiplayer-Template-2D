@@ -119,14 +119,14 @@ public class GameManager : NetworkManager
     public static float Sensitivity => Instance._optionsOpen ? 0 : Instance._sensitivity;
 
     /// <summary>
+    /// If currently in the lobby.
+    /// </summary>
+    public static bool IsLobby => networkSceneName == singleton.onlineScene || SceneManager.GetActiveScene().name == "Lobby";
+
+    /// <summary>
     /// Singleton instance of this game manager.
     /// </summary>
     private static GameManager Instance => singleton as GameManager;
-
-    /// <summary>
-    /// If currently in the lobby.
-    /// </summary>
-    private static bool IsLobby => networkSceneName == singleton.onlineScene || SceneManager.GetActiveScene().name == "Lobby";
 
     /// <summary>
     /// Names of all the maps so map rotation knows what to load.
