@@ -8,7 +8,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
-using Cursor = UnityEngine.Cursor;
 
 /// <summary>
 /// Core component to control the game.
@@ -334,9 +333,6 @@ public class GameManager : NetworkManager
     {
         base.LateUpdate();
 
-        // Handle the cursor.
-        HandleCursor();
-
         // Handle displaying the options.
         HandleOptions();
 
@@ -499,17 +495,6 @@ public class GameManager : NetworkManager
     private void HideOptions()
     {
         _optionsOpen = false;
-    }
-
-    /// <summary>
-    /// Handle if the cursor is shown or not.
-    /// </summary>
-    private void HandleCursor()
-    {
-        // Visible if in the menu or the options are open.
-        bool visible = !IsServer && !IsClient || _optionsOpen;
-        Cursor.visible = visible;
-        Cursor.lockState = visible ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     /// <summary>
